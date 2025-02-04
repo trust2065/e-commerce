@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -12,25 +12,30 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
-    "@clerk/nextjs": "^6.10.6",
-    "@t3-oss/env-nextjs": "^0.12.0",
-    "drizzle-orm": "^0.39.1",
-    "next": "15.2.0-canary.33",
-    "postcss": "^8.5.1",
-    "postgres": "^3.4.5",
+    "@arcjet/next": "^1.0.0-beta.1",
+    "@clerk/nextjs": "^6.9.10",
+    "@t3-oss/env-nextjs": "^0.11.1",
+    "drizzle-orm": "^0.38.3",
+    "next": "^15.2.0-canary.12",
+    "pg": "^8.13.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^2.6.0",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4.0.3",
+    "@tailwindcss/container-queries": "^0.1.1",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "drizzle-kit": "^0.30.4",
+    "autoprefixer": "^10.4.20",
+    "drizzle-kit": "^0.30.1",
     "eslint": "^9",
-    "eslint-config-next": "15.2.0-canary.33",
-    "tailwindcss": "^4.0.3",
+    "eslint-config-next": "15.2.0-canary.11",
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }
