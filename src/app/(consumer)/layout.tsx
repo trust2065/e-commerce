@@ -1,6 +1,7 @@
-import { SignedIn } from '@clerk/nextjs';
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { ReactNode, Suspense } from 'react';
+import { Button } from '../../components/ui/button';
 
 export default function ConsumerLayout({
   children
@@ -22,10 +23,29 @@ function Navbar() {
         <Link className='mr-auto text-lg hover:underline flex items-center px-2' href="/">Link</Link>
         {/* for this next.js canary version */}
         <Suspense>
-          <Link className='hover:bg-accent/10 flex items-center px-2' href='/courses'>My course</Link>
-          <Link className='hover:bg-accent/10 flex items-center px-2' href='/purchases'>Purchase History </Link>
           <SignedIn>
+            <Link className='hover:bg-accent/10 flex items-center px-2' href='/admin'>Admin</Link>
+            <Link className='hover:bg-accent/10 flex items-center px-2' href='/courses'>My course</Link>
+            <Link className='hover:bg-accent/10 flex items-center px-2' href='/purchases'>Purchase History </Link>
+            <div className='size-8 self-center'>
+              <UserButton appearance={{
+                elements: {
+                  userButtonAvatarBox: {
+                    width: '100%', height: '100%'
+                  }
+                }
+              }}>
+
+              </UserButton>
+            </div>
           </SignedIn>
+        </Suspense>
+        <Suspense>
+          <SignedOut>
+            <Button className='self-center' asChild>
+              <Link href='sign-in'>Sign in</Link>
+            </Button>
+          </SignedOut>
         </Suspense>
       </nav>
     </header>
