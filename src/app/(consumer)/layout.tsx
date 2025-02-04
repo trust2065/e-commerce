@@ -34,9 +34,7 @@ function Navbar() {
                     width: '100%', height: '100%'
                   }
                 }
-              }}>
-
-              </UserButton>
+              }} />
             </div>
           </SignedIn>
         </Suspense>
