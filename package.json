@@ -12,23 +12,25 @@
     "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.10.6",
     "@t3-oss/env-nextjs": "^0.12.0",
     "drizzle-orm": "^0.39.1",
     "next": "15.2.0-canary.33",
+    "postcss": "^8.5.1",
     "postgres": "^3.4.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
+    "@tailwindcss/postcss": "^4.0.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "drizzle-kit": "^0.30.4",
     "eslint": "^9",
     "eslint-config-next": "15.2.0-canary.33",
-    "tailwindcss": "^4",
+    "tailwindcss": "^4.0.3",
     "typescript": "^5"
   }
 }
