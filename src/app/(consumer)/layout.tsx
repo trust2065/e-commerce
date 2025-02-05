@@ -2,6 +2,8 @@ import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs';
 import Link from 'next/link';
 import { ReactNode, Suspense } from 'react';
 import { Button } from '../../components/ui/button';
+import { getCurrentUser } from '../../services/clerk';
+import { canAccessAdminPages } from '../../permissions/general';
 
 export default function ConsumerLayout({
   children
@@ -24,7 +26,7 @@ function Navbar() {
         {/* for this next.js canary version */}
         <Suspense>
           <SignedIn>
-            <Link className='hover:bg-accent/10 flex items-center px-2' href='/admin'>Admin</Link>
+            <AdminLink />
             <Link className='hover:bg-accent/10 flex items-center px-2' href='/courses'>My course</Link>
             <Link className='hover:bg-accent/10 flex items-center px-2' href='/purchases'>Purchase History </Link>
             <div className='size-8 self-center'>
@@ -47,5 +49,16 @@ function Navbar() {
         </Suspense>
       </nav>
     </header>
+  );
+}
+
+async function AdminLink() {
+  const user = await getCurrentUser();
+  if (!canAccessAdminPages(user)) {
+    return null;
+  }
+
+  return (
+    <Link className='hover:bg-accent/10 flex items-center px-2' href='/admin'>Admin</Link>
   );
 }
