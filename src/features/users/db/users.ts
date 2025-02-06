@@ -1,6 +1,7 @@
 import { eq } from 'drizzle-orm';
 import { db } from '../../../drizzle/db';
 import { UserTable } from '../../../drizzle/schema';
+import { revalidateUserCache } from './cache';
 
 export async function insertUser(data: typeof UserTable.$inferInsert) {
   const [newUser] = await db.insert(UserTable).values(data).returning().onConflictDoUpdate({
@@ -12,6 +13,8 @@ export async function insertUser(data: typeof UserTable.$inferInsert) {
     throw new Error('Failed to create user');
   }
 
+  revalidateUserCache(newUser.id);
+
   return newUser;
 }
 
@@ -21,6 +24,8 @@ export async function updateUser({ clerkUserId }: { clerkUserId: string; }, data
   if (updatedUser == null) {
     throw new Error('Failed to update user');
   }
+
+  revalidateUserCache(updatedUser.id);
 
   return updatedUser;
 }
@@ -40,6 +45,8 @@ export async function deleteUser({ clerkUserId }: { clerkUserId: string; }) {
   if (deletedUser == null) {
     throw new Error('Failed to delete user');
   }
+
+  revalidateUserCache(deletedUser.id);
 
   return deletedUser;
 }
