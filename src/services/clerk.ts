@@ -20,7 +20,7 @@ export function syncClerkUserMetadata(user: {
   });
 }
 
-export async function getCurrentUser({ allData = false }: { allData: boolean; }) {
+export async function getCurrentUser({ allData = false }: { allData?: boolean; } = {}) {
   const { userId, sessionClaims, redirectToSignIn } = await auth();
 
   return {
