@@ -56,14 +56,18 @@ export async function updateSection(
 }
 
 export async function deleteSection(id: string) {
-  const [deletedSection] = await db.delete(CourseSectionTable).where(eq(CourseSectionTable.id, id));
-
+  const [deletedSection] = await db
+    .delete(CourseSectionTable)
+    .where(eq(CourseSectionTable.id, id))
+    .returning();
   if (deletedSection == null) {
-    throw new Error('Failed to delete section');
+    throw new Error("Failed to delete section");
   }
 
   revalidateCourseSectionCache({
     courseId: deletedSection.courseId,
     id: deletedSection.id,
   });
+
+  return deletedSection;
 }

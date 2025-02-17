@@ -8,12 +8,15 @@ import { CourseSectionTable, CourseTable, LessonTable } from '../../../../../dri
 import { notFound } from 'next/navigation';
 import { PageHeader } from '../../../../../components/PageHeader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../../components/ui/tabs';
-import { Card, CardHeader, CardTitle } from '../../../../../components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../../../../../components/ui/card';
 import { CourseForm } from '../../../../../features/courses/components/CourseForm';
 import SectionFormDialog from '../../../../../features/courseSections/components/SectionFormDialog';
 import { DialogTrigger } from '../../../../../components/ui/dialog';
 import { Button } from '../../../../../components/ui/button';
-import { PlusIcon } from 'lucide-react';
+import { EyeClosedIcon, PlusIcon, Trash2Icon } from 'lucide-react';
+import { cn } from '../../../../../lib/utils';
+import { ActionButton } from '../../../../../components/ActionButton';
+import { deleteSection } from '../../../../../features/courseSections/actions/sections';
 
 export default async function EditCoursePage({ params }: { params: { courseId: string; }; }) {
   const { courseId } = await params;
@@ -43,6 +46,30 @@ export default async function EditCoursePage({ params }: { params: { courseId: s
                 </DialogTrigger>
               </SectionFormDialog>
             </CardHeader>
+            <CardContent>
+              {course.courseSections.map((section) => {
+                const isPrivate = section.status === 'private';
+
+                return (
+                  <div key={section.id} className='flex items-center gap-1'>
+                    <div className={cn('contents', isPrivate && 'text-muted-foreground')}>
+                      {isPrivate && <EyeClosedIcon className='size-3' />}
+                      {section.name}
+                    </div>
+                    <SectionFormDialog section={section} courseId={courseId}>
+                      <DialogTrigger asChild>
+                        <Button variant='outline' size='sm' className='ml-auto'>
+                          Edit
+                        </Button>
+                      </DialogTrigger>
+                    </SectionFormDialog>
+                    <ActionButton action={deleteSection.bind(null, section.id)} requireAreYouSure variant='destructiveOutline' size='sm'>
+                      <Trash2Icon />
+                    </ActionButton>
+                  </div>
+                );
+              })}
+            </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value='details'>

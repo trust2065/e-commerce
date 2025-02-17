@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { getCurrentUser } from "@/services/clerk";
-import { getNextCourseSectionOrder, insertSection } from '../db/sections';
+import { getNextCourseSectionOrder, insertSection, updateSection as updateSectionDb, deleteSection as deleteSectionDb } from '../db/sections';
 import { canCreateCourseSections, canDeleteCourseSections, canUpdateCourseSections } from '../permissions/section';
 import { sectionSchema } from '../schema/courseSection';
 
@@ -48,15 +48,15 @@ export async function deleteSection(id: string) {
   return { error: false, message: "Successfully deleted your section" };
 }
 
-export async function updateSectionOrders(sectionIds: string[]) {
-  if (
-    sectionIds.length === 0 ||
-    !canUpdateCourseSections(await getCurrentUser())
-  ) {
-    return { error: true, message: "Error reordering your sections" };
-  }
+// export async function updateSectionOrders(sectionIds: string[]) {
+//   if (
+//     sectionIds.length === 0 ||
+//     !canUpdateCourseSections(await getCurrentUser())
+//   ) {
+//     return { error: true, message: "Error reordering your sections" };
+//   }
 
-  await updateSectionOrdersDb(sectionIds);
+//   await updateSectionOrdersDb(sectionIds);
 
-  return { error: false, message: "Successfully reordered your sections" };
-}
+//   return { error: false, message: "Successfully reordered your sections" };
+// }
