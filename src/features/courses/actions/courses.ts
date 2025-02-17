@@ -3,8 +3,8 @@
 import { z } from 'zod';
 import { courseSchema } from '../schema/courses';
 import { redirect } from 'next/navigation';
-import { canCreateCourse } from '../permissions/courses';
-import { insertCourse } from '../db/courses';
+import { canCreateCourse as canCreateCourses, canDeleteCourses } from '../permissions/courses';
+import { deleteCourse as deleteCourseDB, insertCourse } from '../db/courses';
 import { getCurrentUser } from '../../../services/clerk';
 
 export async function createCourse(unsafeData: z.infer<typeof courseSchema>) {
@@ -17,7 +17,7 @@ export async function createCourse(unsafeData: z.infer<typeof courseSchema>) {
     };
   }
 
-  if (!canCreateCourse(await getCurrentUser())) {
+  if (!canCreateCourses(await getCurrentUser())) {
     return {
       error: true,
       message: 'You do not have permission to create a course'
@@ -27,4 +27,20 @@ export async function createCourse(unsafeData: z.infer<typeof courseSchema>) {
   const course = await insertCourse(data);
 
   redirect(`/admin/courses/${course.id}/edit`);
+}
+
+export async function deleteCourse(id: string) {
+  if (!canDeleteCourses(await getCurrentUser())) {
+    return {
+      error: true,
+      message: 'Error deleting your course',
+    };
+  }
+
+  await deleteCourseDB(id);
+
+  return {
+    error: false,
+    message: 'Successfully deleted course'
+  };
 }
