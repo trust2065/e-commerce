@@ -29,7 +29,7 @@ export default function SectionFormDialog({
           <SectionForm
             section={section}
             courseId={courseId}
-          // onSuccess={() => setIsOpen(false)}
+            onSuccess={() => setIsOpen(false)}
           />
         </div>
       </DialogContent>

@@ -23,6 +23,7 @@ import { actionToast } from '../../../hooks/use-toast';
 export function SectionForm({
   section,
   courseId,
+  onSuccess,
 }: {
   section?: {
     id: string;
@@ -30,6 +31,7 @@ export function SectionForm({
     status: CourseSectionStatus;
   },
   courseId: string;
+  onSuccess?: () => void;
 }) {
   const form = useForm<z.infer<typeof sectionSchema>>({
     resolver: zodResolver(sectionSchema),
@@ -46,6 +48,10 @@ export function SectionForm({
 
     const data = await action(values);
     actionToast({ actionData: data });
+
+    if (!data.error) {
+      onSuccess?.();
+    }
   }
 
   return (
