@@ -8,8 +8,12 @@ import { CourseSectionTable, CourseTable, LessonTable } from '../../../../../dri
 import { notFound } from 'next/navigation';
 import { PageHeader } from '../../../../../components/PageHeader';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../../../../../components/ui/tabs';
-import { Card, CardHeader } from '../../../../../components/ui/card';
+import { Card, CardHeader, CardTitle } from '../../../../../components/ui/card';
 import { CourseForm } from '../../../../../features/courses/components/CourseForm';
+import SectionFormDialog from '../../../../../features/courseSections/components/SectionFormDialog';
+import { DialogTrigger } from '../../../../../components/ui/dialog';
+import { Button } from '../../../../../components/ui/button';
+import { PlusIcon } from 'lucide-react';
 
 export default async function EditCoursePage({ params }: { params: { courseId: string; }; }) {
   const { courseId } = await params;
@@ -28,7 +32,18 @@ export default async function EditCoursePage({ params }: { params: { courseId: s
           <TabsTrigger value='details'>Details</TabsTrigger>
         </TabsList>
         <TabsContent value='lessons'>
-          Lessons
+          <Card>
+            <CardHeader className='flex items-center flex-row justify-between'>
+              <CardTitle>Sections</CardTitle>
+              <SectionFormDialog courseId={courseId}>
+                <DialogTrigger asChild>
+                  <Button variant='outline'>
+                    <PlusIcon /> New Section
+                  </Button>
+                </DialogTrigger>
+              </SectionFormDialog>
+            </CardHeader>
+          </Card>
         </TabsContent>
         <TabsContent value='details'>
           <Card>
