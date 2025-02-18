@@ -71,3 +71,23 @@ export async function deleteSection(id: string) {
 
   return deletedSection;
 }
+
+export async function updateSectionOrdersDb(sectionIds: string[]) {
+  const sections = await Promise.all(sectionIds.map((id, index) => (
+    db
+      .update(CourseSectionTable)
+      .set({ order: index })
+      .where(eq(CourseSectionTable.id, id))
+      .returning({
+        id: CourseSectionTable.id,
+        courseId: CourseSectionTable.courseId,
+      })
+  )));
+
+  sections.flat().forEach(({ id, courseId }) => {
+    revalidateCourseSectionCache({
+      id,
+      courseId,
+    });
+  });
+}

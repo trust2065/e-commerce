@@ -13,10 +13,8 @@ import { CourseForm } from '../../../../../features/courses/components/CourseFor
 import SectionFormDialog from '../../../../../features/courseSections/components/SectionFormDialog';
 import { DialogTrigger } from '../../../../../components/ui/dialog';
 import { Button } from '../../../../../components/ui/button';
-import { EyeClosedIcon, PlusIcon, Trash2Icon } from 'lucide-react';
-import { cn } from '../../../../../lib/utils';
-import { ActionButton } from '../../../../../components/ActionButton';
-import { deleteSection } from '../../../../../features/courseSections/actions/sections';
+import { PlusIcon } from 'lucide-react';
+import { SortableSectionList } from '../../../../../features/courseSections/components/SortableSectionList';
 
 export default async function EditCoursePage({ params }: { params: { courseId: string; }; }) {
   const { courseId } = await params;
@@ -47,28 +45,10 @@ export default async function EditCoursePage({ params }: { params: { courseId: s
               </SectionFormDialog>
             </CardHeader>
             <CardContent>
-              {course.courseSections.map((section) => {
-                const isPrivate = section.status === 'private';
-
-                return (
-                  <div key={section.id} className='flex items-center gap-1'>
-                    <div className={cn('contents', isPrivate && 'text-muted-foreground')}>
-                      {isPrivate && <EyeClosedIcon className='size-3' />}
-                      {section.name}
-                    </div>
-                    <SectionFormDialog section={section} courseId={courseId}>
-                      <DialogTrigger asChild>
-                        <Button variant='outline' size='sm' className='ml-auto'>
-                          Edit
-                        </Button>
-                      </DialogTrigger>
-                    </SectionFormDialog>
-                    <ActionButton action={deleteSection.bind(null, section.id)} requireAreYouSure variant='destructiveOutline' size='sm'>
-                      <Trash2Icon />
-                    </ActionButton>
-                  </div>
-                );
-              })}
+              <SortableSectionList
+                courseId={courseId}
+                sections={course.courseSections}
+              />
             </CardContent>
           </Card>
         </TabsContent>
