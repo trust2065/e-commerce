@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { getCurrentUser } from "@/services/clerk";
 import { getNextCourseSectionOrder, insertSection, updateSection as updateSectionDb, deleteSection as deleteSectionDb, updateSectionOrdersDb } from '../db/sections';
-import { canCreateCourseSections, canDeleteCourseSections, canUpdateCourseSections } from '../permissions/section';
+import { canCreateCourseSections, canDeleteCourseSections, canUpdateCourseSections } from '../permissions/sections';
 import { sectionSchema } from '../schema/courseSection';
 
 export async function createSection(
