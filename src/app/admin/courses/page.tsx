@@ -8,13 +8,21 @@ import { db } from '../../../drizzle/db';
 import { countDistinct, eq, asc } from 'drizzle-orm';
 import { getLessonGlobalTag } from '../../../features/lessons/db/cache/lessons';
 import { getUserCourseAccessGlobalTag } from '../../../features/courses/db/cache/userCourseAccess';
+import Link from "next/link";
+
+import { Button } from '../../../components/ui/button';
 
 export default async function CoursesPage() {
   const courses = await getCourses();
 
   return (
     <div className='container my-6'>
-      <PageHeader title='Courses'>test</PageHeader>
+      <PageHeader title='Courses'>
+        <Button asChild>
+          <Link href="/admin/courses/new">New Course</Link>
+        </Button>
+      </PageHeader>
+
       <CourseTable courses={courses}></CourseTable>
     </div>
   );
