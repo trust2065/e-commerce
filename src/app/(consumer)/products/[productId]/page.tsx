@@ -47,7 +47,7 @@ export default async function ProductPage({
   return (
     <div className='container my-6 flex flex-col' >
       <div className='flex gap-16 items-center justify-between'>
-        <div className='flex flex-col items-start'>
+        <div className='flex flex-col items-start gap-4'>
           <div className='flex flex-col gap-2'>
             <div className='text-xl'>${product.priceInDollars}</div>
             <h1 className='text-4xl font-semibold'>
@@ -67,7 +67,7 @@ export default async function ProductPage({
           <div className='text-xl'>
             {product.description}
           </div>
-          <Suspense fallback={<SkeletonButton />}>
+          <Suspense fallback={<SkeletonButton className="h-12 w-36" />}>
             <PurchaseButton productId={product.id} />
           </Suspense>
         </div>
