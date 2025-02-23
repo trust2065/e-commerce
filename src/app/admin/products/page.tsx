@@ -21,7 +21,7 @@ export default async function ProductsPage() {
         </Button>
       </PageHeader>
 
-      <ProductTable products={products}></ProductTable>
+      <ProductTable products={products} />
     </div>
   );
 }
