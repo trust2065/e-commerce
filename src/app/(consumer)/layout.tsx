@@ -22,7 +22,9 @@ function Navbar() {
   return (
     <header className='flex h-12 shadow bg-background z-10'>
       <nav className='flex gap-4 container'>
-        <Link className='mr-auto text-lg hover:underline flex items-center' href="/">Link</Link>
+        <Link className='mr-auto text-lg hover:underline flex items-center' href="/">
+          <b>SalePoint</b><div className='pl-2'>- We sale everything</div>
+        </Link>
         {/* for this next.js canary version */}
         <Suspense>
           <SignedIn>
