@@ -8,8 +8,6 @@ import { ProductCard } from '../../features/products/components/ProductCard';
 
 export default async function Page() {
   const products = await getPublicProducts();
-  console.log('ids');
-  console.log(products.map(p => p.id));
 
   return (
     <div className='container my-6'>
