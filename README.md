@@ -39,3 +39,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 - [ Server ] Error: An error occurred in the Server Components render but no message was provided
   - Likely the db is not up, try use `docker-compose up` in command line
+
+  ## Notes
+  - https://www.youtube.com/watch?v=OAyQ3Wyyzfg&ab_channel=WebDevSimplified
+  - I've skipped 2 parts
+    - price for different regions
+    - edge case handling - 6:16 - when a new user is login in the purchase page.
+      - when login, the user is not exists in the db yet. but we are trying to insert data to db with that user
