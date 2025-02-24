@@ -1,3 +1,5 @@
+'use server';
+
 import { env } from '../../../data/env/client';
 import { stripeServerClient } from '../stripeServer';
 
@@ -43,7 +45,7 @@ export async function getClientSessionSecret(
   });
 
   if (session.client_secret == null) {
-    throw new Error('Could not get client secret');
+    throw new Error('Could not get stripe client secret');
   }
 
   return session.client_secret;
