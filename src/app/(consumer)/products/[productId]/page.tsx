@@ -17,7 +17,7 @@ import { getCurrentUser } from '../../../../services/clerk';
 import { userOwnsProduct } from '../../../../features/products/db/products';
 import Link from 'next/link';
 import { Button } from '../../../../components/ui/button';
-import { SkeletonButton } from '../../../../components/SkeletonButton';
+import { SkeletonButton } from '../../../../components/Skeleton';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../../../components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../../../../components/ui/accordion';

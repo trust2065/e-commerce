@@ -28,7 +28,7 @@ export const PurchaseTable = pgTable('purchases', {
   stripeSessionId: text().notNull().unique(),
   refundedAt: timestamp({ withTimezone: true }),
   createdAt,
-updatedAt,
+  updatedAt,
 });
 
 export const PurchaseRelationships = relations(PurchaseTable, ({ one }) => ({
