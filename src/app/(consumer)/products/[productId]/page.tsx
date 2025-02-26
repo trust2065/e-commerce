@@ -11,7 +11,7 @@ import { getLessonCourseTag } from '../../../../features/lessons/db/cache/lesson
 import { getCourseSectionCourseTag } from '../../../../features/courseSections/db/cache';
 import { getCourseIdTag } from '../../../../features/courses/db/cache/courses';
 import { sumArray } from '../../../../lib/sumArray';
-import { formatPlural } from '../../../../lib/formatter';
+import { formatPlural } from '../../../../lib/formatters';
 import { Suspense } from 'react';
 import { getCurrentUser } from '../../../../services/clerk';
 import { userOwnsProduct } from '../../../../features/products/db/products';

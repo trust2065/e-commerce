@@ -5,8 +5,8 @@ import { stripeServerClient } from '../../../../services/stripe/stripeServer';
 import { eq } from 'drizzle-orm';
 import { ProductTable, UserTable } from '../../../../drizzle/schema';
 import { db } from '../../../../drizzle/db';
-import addUserCourseAccess from '../../../../features/courses/db/userCourseAccess';
-import { insertPurchase } from '../../../../features/purchases/purchase';
+import { addUserCourseAccess } from '../../../../features/courses/db/userCourseAccess';
+import { insertPurchase } from '../../../../features/purchases/db/purchase';
 import { env } from '../../../../data/env/server';
 
 export async function GET(req: NextRequest) {

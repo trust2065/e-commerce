@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
 import { Button } from '../../../components/ui/button';
 import Link from 'next/link';
-import { formatDate, formatPrice } from '../../../lib/formatter';
+import { formatDate, formatPrice } from '../../../lib/formatters';
 import { Badge } from '../../../components/ui/badge';
 import { SkeletonArray, SkeletonButton, SkeletonText } from '../../../components/Skeleton';
 

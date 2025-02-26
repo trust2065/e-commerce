@@ -1,7 +1,7 @@
 import { Trash2Icon } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
-import { formatPlural } from '../../../lib/formatter';
+import { formatPlural } from '../../../lib/formatters';
 import { ActionButton } from '../../../components/ActionButton';
 import { deleteCourse } from '../actions/courses';
 import Link from 'next/link';

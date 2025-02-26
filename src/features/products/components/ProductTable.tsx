@@ -1,7 +1,7 @@
 import { EyeIcon, LockIcon, Trash2Icon } from 'lucide-react';
 import { Button } from '../../../components/ui/button';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '../../../components/ui/table';
-import { formatPlural, formatPrice } from '../../../lib/formatter';
+import { formatPlural, formatPrice } from '../../../lib/formatters';
 import { ActionButton } from '../../../components/ActionButton';
 import Link from 'next/link';
 import { ProductStatus } from '../../../drizzle/schema';

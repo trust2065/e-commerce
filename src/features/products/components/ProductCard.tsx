@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '../../../components/ui/card';
 import { Suspense } from 'react';
-import { formatPrice } from '../../../lib/formatter';
+import { formatPrice } from '../../../lib/formatters';
 import { Button } from '../../../components/ui/button';
 import Link from 'next/link';
 
