@@ -30,7 +30,7 @@ async function SuspenseBoundary() {
   }
 
   const userPurchases = await getUserPurchases(userId);
-  await sleep(600);
+  // await sleep(600);
 
   if (userPurchases.length === 0) {
     return (
