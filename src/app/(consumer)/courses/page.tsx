@@ -9,7 +9,7 @@ import { SkeletonCourseCard, UserCourseGrid } from '../../../features/courses/co
 import { Suspense } from 'react';
 import { wherePublicCourseSections } from '../../../features/courseSections/permissions/sections';
 import { wherePublicLessons } from '../../../features/lessons/permissions/lessons';
-import { getUserLessonCompleteUserTag } from '../../../features/lessons/db/cache/lessonComplete';
+import { getUserLessonCompleteUserTag } from '../../../features/lessons/db/cache/userLessonComplete';
 import { getCourseIdTag } from '../../../features/courses/db/cache/courses';
 import { getCourseSectionCourseTag } from '../../../features/courseSections/db/cache';
 import { getLessonCourseTag } from '../../../features/lessons/db/cache/lessons';

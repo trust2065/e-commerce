@@ -20,7 +20,7 @@ import { lessonSchema } from '../schemas/lessons';
 import { Textarea } from '../../../components/ui/textarea';
 import { createLesson, updateLesson } from '../actions/lessons';
 import { actionToast } from '../../../hooks/use-toast';
-import { YoutubeVideoPlayer } from './YoutubeVideoPlayer';
+import { YoutubeVideoPlayer } from '../../../components/YoutubeVideoPlayer';
 
 export function LessonForm({
   sections,

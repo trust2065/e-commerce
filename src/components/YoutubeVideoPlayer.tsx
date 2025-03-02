@@ -1,3 +1,5 @@
+"use client";
+
 import Youtube from 'react-youtube';
 
 export function YoutubeVideoPlayer({
