@@ -45,7 +45,7 @@ function Navbar() {
         <Suspense>
           <SignedOut>
             <Button className='self-center' asChild>
-              <Link href='sign-in'>Sign in</Link>
+              <Link href='/sign-in'>Sign in</Link>
             </Button>
           </SignedOut>
         </Suspense>

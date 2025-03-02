@@ -106,7 +106,7 @@ export default async function ProductPage({
                         <div key={lesson.id} className='flex items-center text-base gap-2'>
                           <VideoIcon className='size-4' />
                           {lesson.status === 'preview' ? (
-                            <Link className='underline text-accent' href={`courses/${course.id}/lessons/${lesson.id}`}>{lesson.name}</Link>
+                            <Link className='underline text-accent' href={`/courses/${course.id}/lessons/${lesson.id}`}>{lesson.name}</Link>
                           ) : (
                             lesson.name
                           )}
