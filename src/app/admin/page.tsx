@@ -28,13 +28,13 @@ export default async function AdminPage() {
           {formatPrice(netSales)}
         </StatCard>
         <StatCard title='Refunds Sales' >
-          {formatPrice(refundedPurchases)}
+          {formatPrice(totalRefunds)}
         </StatCard>
         <StatCard title='Purchases' >
           {formatNumber(netPurchases)}
         </StatCard>
         <StatCard title='Refunded purchases' >
-          {formatNumber(totalRefunds)}
+          {formatNumber(refundedPurchases)}
         </StatCard>
         <StatCard title='Purchases Per User' >
           {formatNumber(averageNetPurchasesPerCustomer, { maximumFractionDigits: 2 })}
